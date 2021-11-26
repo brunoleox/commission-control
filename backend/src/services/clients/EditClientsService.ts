@@ -1,5 +1,4 @@
 import prismaCLient from '../../prisma'
-
 class EditClientsService {
   async execute(
     name: string,
@@ -13,7 +12,7 @@ class EditClientsService {
     state: string,
     cep: number
   ) {
-    const clients = await prismaCLient.clients.update({
+    const editClient = await prismaCLient.clients.update({
       where: {
         cnpj_cpf,
       },
@@ -29,7 +28,7 @@ class EditClientsService {
         cep,
       },
     })
-    return clients
+    return editClient
   }
 }
 

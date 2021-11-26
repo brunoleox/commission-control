@@ -1,5 +1,6 @@
+import { isValidCNPJ, isValidCPF } from '@brazilian-utils/brazilian-utils'
+import { AppError } from '../../errors/AppError'
 import prismaCLient from '../../prisma'
-
 class CreateClientsService {
   async execute(
     name: string,
@@ -13,7 +14,23 @@ class CreateClientsService {
     state: string,
     cep: number
   ) {
-    const clients = await prismaCLient.clients.create({
+    if (cnpj_cpf.length == 11 && !isValidCPF(cnpj_cpf)) {
+      throw new AppError('CPF inválido')
+    }
+    if (cnpj_cpf.length == 14 && !isValidCNPJ(cnpj_cpf)) {
+      throw new AppError('CNPJ inválido')
+    }
+
+    const clientAlreadExists = await prismaCLient.clients.findFirst({
+      where: {
+        cnpj_cpf,
+      },
+    })
+    if (clientAlreadExists) {
+      throw new AppError('CNPJ ou CPF já cadastrado.')
+    }
+
+    const createClient = await prismaCLient.clients.create({
       data: {
         name,
         cnpj_cpf,
@@ -27,7 +44,7 @@ class CreateClientsService {
         cep,
       },
     })
-    return clients
+    return createClient
   }
 }
 

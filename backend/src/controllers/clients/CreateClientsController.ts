@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import { AppError } from '../../errors/AppError'
 import { CreateClientsService } from '../../services/clients/CreateClientsService'
 
 interface IRequest {
@@ -27,20 +28,33 @@ class CreateClientsController {
       state,
       cep,
     }: IRequest = request.body
+
     const service = new CreateClientsService()
-    const result = await service.execute(
-      name,
-      cnpj_cpf,
-      email,
-      phone,
-      address,
-      number,
-      district,
-      city,
-      state,
-      cep
-    )
-    return response.json(result)
+    try {
+      const result = await service.execute(
+        name,
+        cnpj_cpf,
+        email,
+        phone,
+        address,
+        number,
+        district,
+        city,
+        state,
+        cep
+      )
+      return response.json(result)
+    } catch (error) {
+      console.error(error)
+      if (error instanceof AppError) {
+        return response
+          .status(error.statusCode)
+          .json({ message: error.message })
+      }
+      return response
+        .status(500)
+        .json({ message: 'Algo deu errado ao criar o cliente.' })
+    }
   }
 }
 

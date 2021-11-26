@@ -4,14 +4,14 @@ import { DeleteClientsService } from '../../services/clients/DeleteClientsServic
 interface IRequest {
   cnpj_cpf: string
 }
-
 class DeleteClientsController {
   async handle(request: Request, response: Response) {
-    const { cnpj_cpf } = request.body
+    const { cnpj_cpf }: IRequest = request.body
+    console.log(request.body)
 
     const service = new DeleteClientsService()
-    const result = await service.execute(cnpj_cpf)
-    return response.json(result)
+    await service.execute(cnpj_cpf)
+    return response.status(204).send()
   }
 }
 

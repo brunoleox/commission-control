@@ -10,3 +10,9 @@ export interface IClients {
   state: string
   cep: number
 }
+
+export interface IProducts {
+  id: string
+  name: string
+  value: number
+}

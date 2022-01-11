@@ -1,31 +1,13 @@
+import { IClients } from '../../interfaces'
 import prismaCLient from '../../prisma'
 class EditClientsService {
-  async execute(
-    name: string,
-    cnpj_cpf: string,
-    email: string,
-    phone: string,
-    address: string,
-    number: string,
-    district: string,
-    city: string,
-    state: string,
-    cep: number
-  ) {
+  async execute({ ...client }: IClients) {
     const editClient = await prismaCLient.clients.update({
       where: {
-        cnpj_cpf,
+        cnpj_cpf: client.cnpj_cpf,
       },
       data: {
-        name,
-        email,
-        phone,
-        address,
-        number,
-        district,
-        city,
-        state,
-        cep,
+        ...client,
       },
     })
     return editClient

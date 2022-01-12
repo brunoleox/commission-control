@@ -16,3 +16,9 @@ export interface IProducts {
   name: string
   value: number
 }
+
+export interface IOrders {
+  id: string
+  client: string
+  products: IProducts[]
+}

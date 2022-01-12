@@ -11,7 +11,7 @@ class CreateClientsService {
       throw new AppError('CNPJ inválido')
     }
 
-    const clientAlreadExists = await prismaCLient.clients.findFirst({
+    const clientAlreadExists = await prismaCLient.client.findFirst({
       where: {
         cnpj_cpf: client.cnpj_cpf,
       },
@@ -20,7 +20,7 @@ class CreateClientsService {
       throw new AppError('CNPJ ou CPF já cadastrado.')
     }
 
-    const createClient = await prismaCLient.clients.create({
+    const createClient = await prismaCLient.client.create({
       data: {
         ...client,
       },

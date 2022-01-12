@@ -11,6 +11,7 @@ import { CreateProductsController } from './controllers/products/CreateProductsC
 import { ListProductsController } from './controllers/products/ListProductsController'
 import { EditProductsController } from './controllers/products/EditProductsController'
 import { DeleteProductsController } from './controllers/products/DeleteProductsController'
+import { CreateOrderController } from './controllers/orders/CreateOrderController'
 
 const router = Router()
 
@@ -27,5 +28,7 @@ router.post(
 )
 router.put('/products/:id', new EditProductsController().handle)
 router.delete('/products', new DeleteProductsController().handle)
+
+router.post('/orders', new CreateOrderController().handle)
 
 export { router }

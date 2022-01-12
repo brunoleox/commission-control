@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Clients {
+model Client {
   id         String   @id @default(uuid())
   created_at DateTime @default(now())
   name       String
@@ -20,28 +20,38 @@ model Clients {
   city       String?
   state      String?
   cep        Int?
-  order      Orders[]
+  orders     Order[]
 
-  @@map("client")
+  @@map("clients")
 }
 
-model Products {
-  id         String   @id @unique @default(uuid())
-  created_at DateTime @default(now())
+model Product {
+  id         String           @id @unique @default(uuid())
+  created_at DateTime         @default(now())
   name       String
   value      Float
-  order      Orders[]
+  orders     ProductOnOrder[]
 
-  @@map("product")
+  @@map("products")
 }
 
-model Orders {
-  id         String    @id @unique @default(uuid())
-  created_at DateTime  @default(now())
-  client     Clients?  @relation(fields: [clientId], references: [id])
+model Order {
+  id         String           @id @unique @default(uuid())
+  created_at DateTime         @default(now())
+  products   ProductOnOrder[]
+  Client     Client?          @relation(fields: [clientId], references: [id])
   clientId   String?
-  Product    Products? @relation(fields: [productId], references: [id])
-  productId  String?
 
-  @@map("order")
+  @@map("orders")
+}
+
+model ProductOnOrder {
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id])
+
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+
+  created_at DateTime @default(now())
+  @@id([orderId, productId])
 }

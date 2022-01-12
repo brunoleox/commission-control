@@ -3,7 +3,7 @@ import { IProducts } from '../../interfaces'
 import prismaCLient from '../../prisma'
 class CreateProductService {
   async execute({ ...products }: IProducts) {
-    const createProduct = await prismaCLient.products.create({
+    const createProduct = await prismaCLient.product.create({
       data: {
         ...products,
       },

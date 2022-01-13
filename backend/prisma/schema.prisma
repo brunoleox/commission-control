@@ -37,6 +37,8 @@ model Product {
 
 model Order {
   id         String           @id @unique @default(uuid())
+  number     Int              @unique @default(autoincrement())
+  name       String
   created_at DateTime         @default(now())
   products   ProductOnOrder[]
   Client     Client?          @relation(fields: [clientId], references: [id])

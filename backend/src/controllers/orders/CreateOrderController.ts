@@ -6,15 +6,16 @@ import { CreateOrderService } from '../../services/orders/CreateOrdersService'
 type RequestOrder = {
   cnpj_cpf: string
   products: IProducts[]
+  name: IProducts
 }
 
 class CreateOrderController {
   async handle(request: Request<{}, {}, RequestOrder>, response: Response) {
-    const { products, cnpj_cpf } = request.body
+    const { products, cnpj_cpf, name } = request.body
 
     const service = new CreateOrderService()
     try {
-      const result = await service.execute(products, cnpj_cpf)
+      const result = await service.execute(products, cnpj_cpf, name)
       return response.json(result)
     } catch (error) {
       console.error(error)

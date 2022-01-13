@@ -20,5 +20,7 @@ export interface IProducts {
 export interface IOrders {
   id: string
   client: string
+  name: string
+  number: number
   products: IProducts[]
 }

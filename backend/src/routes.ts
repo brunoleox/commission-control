@@ -12,6 +12,7 @@ import { ListProductsController } from './controllers/products/ListProductsContr
 import { EditProductsController } from './controllers/products/EditProductsController'
 import { DeleteProductsController } from './controllers/products/DeleteProductsController'
 import { CreateOrderController } from './controllers/orders/CreateOrderController'
+import { ListOrdersController } from './controllers/orders/ListOrderController'
 
 const router = Router()
 
@@ -30,5 +31,6 @@ router.put('/products/:id', new EditProductsController().handle)
 router.delete('/products', new DeleteProductsController().handle)
 
 router.post('/orders', new CreateOrderController().handle)
+router.get('/orders', new ListOrdersController().handle)
 
 export { router }

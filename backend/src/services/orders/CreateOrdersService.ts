@@ -3,7 +3,7 @@ import { IProducts } from '../../interfaces'
 import prismaCLient from '../../prisma'
 
 class CreateOrderService {
-  async execute(products: IProducts[], cnpj_cpf: string, name: IProducts) {
+  async execute(products: IProducts[], cnpj_cpf: string, name: string) {
     const clientAlreadExists = await prismaCLient.client.findFirst({
       where: {
         cnpj_cpf,
@@ -17,9 +17,7 @@ class CreateOrderService {
       return {
         productId: product.id,
       }
-      console.log(product)
     })
-    console.log(createProductsList)
 
     const createOrder = await prismaCLient.order.create({
       data: {

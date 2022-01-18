@@ -2,6 +2,8 @@ import { Router } from 'express'
 import { clientValidator } from './middlewares/validatorClient'
 import { productValidator } from './middlewares/validatorProducts'
 
+import { CreateUserClient } from './controllers/login/createUserController'
+
 import { ListClientsController } from './controllers/clients/ListClientsController'
 import { CreateClientsController } from './controllers/clients/CreateClientsController'
 import { EditClientsController } from './controllers/clients/EditClientsController'
@@ -11,10 +13,13 @@ import { CreateProductsController } from './controllers/products/CreateProductsC
 import { ListProductsController } from './controllers/products/ListProductsController'
 import { EditProductsController } from './controllers/products/EditProductsController'
 import { DeleteProductsController } from './controllers/products/DeleteProductsController'
+
 import { CreateOrderController } from './controllers/orders/CreateOrderController'
 import { ListOrdersController } from './controllers/orders/ListOrderController'
 
 const router = Router()
+
+router.post('/login', new CreateUserClient().handle)
 
 router.get('/clients', new ListClientsController().handle)
 router.post('/clients', clientValidator, new CreateClientsController().handle)
@@ -27,7 +32,7 @@ router.post(
   productValidator,
   new CreateProductsController().handle
 )
-router.put('/products/:code', new EditProductsController().handle)
+router.put('/products', new EditProductsController().handle)
 router.delete('/products', new DeleteProductsController().handle)
 
 router.post('/orders', new CreateOrderController().handle)

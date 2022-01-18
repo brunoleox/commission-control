@@ -1,3 +1,8 @@
+export interface IUser {
+  email: string
+  password: string
+}
+
 export interface IClients {
   name: string
   cnpj_cpf: string

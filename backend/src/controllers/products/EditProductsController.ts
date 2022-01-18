@@ -5,10 +5,10 @@ import { EditProductsService } from '../../services/products/EditProdutsService'
 class EditProductsController {
   async handle(request: Request, response: Response) {
     const { ...products }: IProducts = request.body
-    const { id } = request.params
+    const { code } = request.params
 
     const service = new EditProductsService()
-    const result = await service.execute({ id, ...products })
+    const result = await service.execute({ code, ...products })
     return response.json(result)
   }
 }

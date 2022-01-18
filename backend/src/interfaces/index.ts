@@ -15,11 +15,12 @@ export interface IProducts {
   id: string
   name: string
   value: number
+  code: number
 }
 
 export interface IOrders {
   id: string
-  client: string
+  client: IClients[]
   name: string
   number: number
   products: IProducts[]

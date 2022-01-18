@@ -8,14 +8,14 @@ class CreateClientsService {
       throw new AppError('CPF inválido')
     }
     if (
-      client.cnpj_cpf.length >= 11 &&
+      client.cnpj_cpf.length > 11 &&
       client.cnpj_cpf.length <= 14 &&
       !isValidCNPJ(client.cnpj_cpf)
     ) {
       throw new AppError('CNPJ inválido')
     }
 
-    const clientAlreadExists = await prismaCLient.client.findFirst({
+    const clientAlreadExists = await prismaCLient.client.findUnique({
       where: {
         cnpj_cpf: client.cnpj_cpf,
       },

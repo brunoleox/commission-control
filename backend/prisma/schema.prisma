@@ -28,6 +28,7 @@ model Client {
 model Product {
   id         String           @id @unique @default(uuid())
   created_at DateTime         @default(now())
+  code       Int              @unique @default(autoincrement())
   name       String
   value      Float
   orders     ProductOnOrder[]
@@ -44,6 +45,7 @@ model Order {
   Client     Client?          @relation(fields: [clientId], references: [id])
   clientId   String?
 
+  @@index([number])
   @@map("orders")
 }
 

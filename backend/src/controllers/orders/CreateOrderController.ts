@@ -6,7 +6,7 @@ import { CreateOrderService } from '../../services/orders/CreateOrdersService'
 type RequestOrder = {
   cnpj_cpf: string
   products: IProducts[]
-  name: IProducts
+  name: string
 }
 
 class CreateOrderController {

@@ -27,7 +27,7 @@ router.post(
   productValidator,
   new CreateProductsController().handle
 )
-router.put('/products/:id', new EditProductsController().handle)
+router.put('/products/:code', new EditProductsController().handle)
 router.delete('/products', new DeleteProductsController().handle)
 
 router.post('/orders', new CreateOrderController().handle)

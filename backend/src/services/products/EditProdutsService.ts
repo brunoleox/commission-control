@@ -4,26 +4,15 @@ import prismaCLient from '../../prisma'
 
 class EditProductsService {
   async execute({ ...products }: IProducts) {
-    const productAlreadExists = await prismaCLient.product.findUnique({
+    await prismaCLient.product.updateMany({
       where: {
-        code: +products.code,
+        code: products.code,
+      },
+      data: {
+        name: products.name,
+        value: products.value,
       },
     })
-    if (!productAlreadExists) {
-      throw new AppError('Produto não existe')
-    } else {
-      const EditProducts = await prismaCLient.product.update({
-        where: {
-          code: +products.code,
-        },
-        data: {
-          name: products.name,
-          value: products.value,
-        },
-      })
-      return EditProducts
-    }
   }
 }
-
 export { EditProductsService }

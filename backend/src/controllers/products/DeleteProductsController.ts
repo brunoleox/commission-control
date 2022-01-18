@@ -3,11 +3,10 @@ import { DeleteProductsService } from '../../services/products/DeleteProductsSer
 
 class DeleteProductsController {
   async handle(request: Request, response: Response) {
-    const { id } = request.body
-    console.log(id)
+    const { code } = request.body
 
     const service = new DeleteProductsService()
-    await service.execute(id)
+    await service.execute(code)
     return response.status(204).send()
   }
 }

@@ -23,10 +23,8 @@ export interface IProducts {
   code: number
 }
 
-export interface IOrders {
+export interface IOrders extends IClients, IProducts {
   id: string
-  client: IClients[]
   name: string
-  number: number
-  products: IProducts[]
+  order: number
 }

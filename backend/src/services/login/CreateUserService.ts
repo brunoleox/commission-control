@@ -6,6 +6,7 @@ import { firebase } from '../../firebase'
 class CreateUserService {
   async execute({ ...user }: IUser) {
     const auth = getAuth(firebase)
+    console.log(user)
     createUserWithEmailAndPassword(auth, user.email, user.password)
       .then((userCredential) => {
         const user = userCredential.user

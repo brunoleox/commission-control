@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn --exit-child src/app.ts"
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn --exit-child src/app.ts",
+    "migrate": "yarn prisma migrate dev"
   },
   "prisma": {
-    "migrate": "ts-node prisma migrate dev",
     "seed": "ts-node prisma/seed.ts"
   },
   "keywords": [],

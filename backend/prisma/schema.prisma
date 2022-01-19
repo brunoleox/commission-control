@@ -27,32 +27,32 @@ model Client {
 
 model Product {
   id         String           @id @unique @default(uuid())
-  created_at DateTime         @default(now())
   code       Int              @unique @default(autoincrement())
   name       String
   value      Float
   orders     ProductOnOrder[]
+  created_at DateTime         @default(now())
 
+  @@index([name])
   @@map("products")
 }
 
 model Order {
   id         String           @id @unique @default(uuid())
-  number     Int              @unique @default(autoincrement())
+  order      Int              @unique @default(autoincrement())
   name       String
-  created_at DateTime         @default(now())
   products   ProductOnOrder[]
   Client     Client?          @relation(fields: [clientId], references: [id])
   clientId   String?
+  created_at DateTime         @default(now())
 
-  @@index([number])
+  @@index([order])
   @@map("orders")
 }
 
 model ProductOnOrder {
-  orderId String
-  order   Order  @relation(fields: [orderId], references: [id])
-
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id])
   productId String
   product   Product @relation(fields: [productId], references: [id])
 

@@ -1,18 +1,25 @@
-import { Order } from '@prisma/client'
-import { IOrders, IProducts } from '../../interfaces'
+import { IProducts } from '../../interfaces'
 import prismaCLient from '../../prisma'
 
-type EditOrder = {
-  number: IOrders
-  name: IOrders
-  products: IProducts
-}
-
 class EditOrdersService {
-  async execute(name: string, number: number, products: IProducts) {
-    const editOrder = await prismaCLient.order.update({
+  async execute(name: string, products: IProducts, order: number) {
+    console.log(order, name, products)
+
+    await prismaCLient.$transaction([
+      prismaCLient.product.updateMany({
+        where: {
+          id: products.id,
+        },
+        data: {
+          name: products.name,
+          value: products.value,
+        },
+      }),
+    ])
+
+    const editOrder = await prismaCLient.order.updateMany({
       where: {
-        number: number,
+        order,
       },
       data: {
         name,

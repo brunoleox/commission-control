@@ -1,7 +1,9 @@
 import { Request, Response } from 'express'
-import { AppError } from '../../errors/AppError'
+import { FirebaseError } from 'firebase/app'
 import { IUser } from '../../interfaces'
 import { CreateUserService } from '../../services/login/CreateUserService'
+import { AppErrorProvider } from '../../utils/AppErrorProvider'
+import { FirebaseErrorProvider } from '../../utils/FirebaseErrorProvider'
 
 class CreateUserClient {
   async handle(request: Request, response: Response) {
@@ -10,19 +12,14 @@ class CreateUserClient {
     const service = new CreateUserService()
     try {
       const result = await service.execute(user)
-      return response.json(result)
+      return response.json(result.user)
     } catch (error) {
-      console.error(error)
-      if (error instanceof AppError) {
-        return response
-          .status(error.statusCode)
-          .json({ message: error.message })
-      }
-      return response
-        .status(500)
-        .json({ message: 'Algo deu errado ao criar o usuário.' })
+      FirebaseErrorProvider(
+        response,
+        error,
+        'Não foi possivel criar o usuário!'
+      )
     }
   }
 }
-
 export { CreateUserClient }

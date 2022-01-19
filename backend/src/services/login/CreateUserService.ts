@@ -1,20 +1,16 @@
-import { AppError } from '../../errors/AppError'
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
-import { IUser } from '../../interfaces'
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
 import { firebase } from '../../firebase'
+import { IUser } from '../../interfaces'
 
 class CreateUserService {
   async execute({ ...user }: IUser) {
     const auth = getAuth(firebase)
-    console.log(user)
-    createUserWithEmailAndPassword(auth, user.email, user.password)
-      .then((userCredential) => {
-        const user = userCredential.user
-        return user
-      })
-      .catch(() => {
-        throw new AppError('Não foi possível criar o usúario.', 500)
-      })
+    const createUser = await createUserWithEmailAndPassword(
+      auth,
+      user.email,
+      user.password
+    )
+    return createUser
   }
 }
 export { CreateUserService }

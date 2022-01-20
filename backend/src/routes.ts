@@ -2,7 +2,9 @@ import { Router } from 'express'
 import { clientValidator } from './middlewares/validatorClient'
 import { productValidator } from './middlewares/validatorProducts'
 
-import { CreateUserClient } from './controllers/login/CreateUserController'
+import { CreateUserController } from './controllers/login/CreateUserController'
+import { LoginUserController } from './controllers/login/LoginUserControler'
+import { LogoutUserController } from './controllers/login/LogoutUserController'
 
 import { ListClientsController } from './controllers/clients/ListClientsController'
 import { CreateClientsController } from './controllers/clients/CreateClientsController'
@@ -20,7 +22,9 @@ import { EditOrderController } from './controllers/orders/EditOrderController'
 
 const router = Router()
 
-router.post('/login', new CreateUserClient().handle)
+router.post('/create', new CreateUserController().handle)
+router.post('/login', new LoginUserController().handle)
+router.post('/logout', new LogoutUserController().handle)
 
 router.get('/clients', new ListClientsController().handle)
 router.post('/clients', clientValidator, new CreateClientsController().handle)

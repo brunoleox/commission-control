@@ -1,12 +1,12 @@
-import { signOut, getAuth } from 'firebase/auth'
+import { json, response } from 'express'
+import { getAuth, signOut } from 'firebase/auth'
 import { firebase } from '../../firebase'
-import { IUser } from '../../interfaces'
 
 class LogoutUserService {
-  async execute(uid) {
+  async execute() {
     const auth = getAuth(firebase)
-    const logoutUser = await signOut(auth)
-    return logoutUser
+    await signOut(auth)
+    return
   }
 }
 export { LogoutUserService }

@@ -4,10 +4,9 @@ import { FirebaseErrorProvider } from '../../utils/FirebaseErrorProvider'
 
 class LogoutUserController {
   async handle(request: Request, response: Response) {
-    const { uid }: string = request.body
     const service = new LogoutUserService()
     try {
-      await service.execute(uid)
+      await service.execute()
     } catch (error) {
       FirebaseErrorProvider(
         response,

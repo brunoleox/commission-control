@@ -5,7 +5,6 @@ import { CreateClientsService } from '../../services/clients/CreateClientsServic
 class CreateClientsController {
   async handle(request: Request, response: Response) {
     const { ...client }: IClients = request.body
-
     const service = new CreateClientsService()
     try {
       const result = await service.execute(client)

@@ -1,6 +1,9 @@
-export interface IUser {
+export interface IUsers {
   email: string
   password: string
+  name: string
+  business: string
+  isAdmin: boolean
 }
 
 export interface IClients {

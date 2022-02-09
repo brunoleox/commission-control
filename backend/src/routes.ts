@@ -3,7 +3,7 @@ import { clientValidator } from './middlewares/validatorClient'
 import { productValidator } from './middlewares/validatorProducts'
 
 import { CreateUsersController } from './controllers/users/CreateUsersController'
-// import { LoginUserController } from './controllers/login/LoginUserControler'
+import { LoginUserController } from './controllers/users/LoginUsersController'
 // import { LogoutUserController } from './controllers/login/LogoutUserController'
 
 import { ListClientsController } from './controllers/clients/ListClientsController'
@@ -23,7 +23,7 @@ import { EditOrderController } from './controllers/orders/EditOrderController'
 const router = Router()
 
 router.post('/users', new CreateUsersController().handle)
-// router.post('/login', new LoginUserController().handle)
+router.post('/login', new LoginUserController().handle)
 // router.post('/logout', new LogoutUserController().handle)
 
 router.get('/clients', new ListClientsController().handle)

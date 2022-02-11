@@ -19,6 +19,7 @@ import { DeleteProductsController } from './controllers/products/DeleteProductsC
 import { CreateOrderController } from './controllers/orders/CreateOrderController'
 import { ListOrdersController } from './controllers/orders/ListOrderController'
 import { EditOrderController } from './controllers/orders/EditOrderController'
+import { ensureAuthenticated } from './middlewares/ensureAuthenticated'
 
 const router = Router()
 
@@ -27,7 +28,12 @@ router.post('/login', new LoginUserController().handle)
 // router.post('/logout', new LogoutUserController().handle)
 
 router.get('/clients', new ListClientsController().handle)
-router.post('/clients', clientValidator, new CreateClientsController().handle)
+router.post(
+  '/clients',
+  ensureAuthenticated,
+  clientValidator,
+  new CreateClientsController().handle
+)
 router.put('/clients', new EditClientsController().handle)
 router.delete('/clients', new DeleteClientsController().handle)
 

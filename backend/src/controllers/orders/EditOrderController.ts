@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
-import { IClients, IOrders, IProducts } from '../../interfaces'
-import { EditOrdersService } from '../../services/orders/EditOrderService'
-import { AppErrorProvider } from '../../utils/AppErrorProvider'
+import { IProducts } from 'interfaces'
+import { EditOrdersService } from 'services/orders/EditOrderService'
+import { AppErrorProvider } from 'utils/AppErrorProvider'
 
 type OrderType = {
   name: string

@@ -1,6 +1,6 @@
-import { AppError } from '../../errors/AppError'
-import { IClients } from '../../interfaces'
-import prismaCLient from '../../prisma'
+import { AppError } from 'errors/AppError'
+import { IClients } from 'interfaces'
+import prismaCLient from 'prisma'
 class EditClientsService {
   async execute({ ...client }: IClients) {
     const clientAlreadExists = await prismaCLient.client.findUnique({

@@ -1,5 +1,5 @@
-import { AppError } from '../../errors/AppError'
-import prismaCLient from '../../prisma'
+import { AppError } from 'errors/AppError'
+import prismaCLient from 'prisma'
 class DeleteClientsService {
   async execute(cnpj_cpf: string) {
     const clientAlreadExists = await prismaCLient.client.findUnique({

@@ -1,6 +1,6 @@
-import { AppError } from '../../errors/AppError'
-import { IProducts } from '../../interfaces'
-import prismaCLient from '../../prisma'
+import { AppError } from 'errors/AppError'
+import { IProducts } from 'interfaces'
+import prismaCLient from 'prisma'
 
 class EditProductsService {
   async execute({ ...products }: IProducts) {

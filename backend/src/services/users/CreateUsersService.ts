@@ -1,6 +1,6 @@
-import { AppError } from '../../errors/AppError'
-import { IUsers } from '../../interfaces'
-import prismaCLient from '../../prisma'
+import { AppError } from 'errors/AppError'
+import { IUsers } from 'interfaces'
+import prismaCLient from 'prisma'
 import { hash } from 'bcrypt'
 class CreateUsersService {
   async execute({ ...users }: IUsers) {

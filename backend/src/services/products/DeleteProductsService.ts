@@ -1,6 +1,5 @@
-import { AppError } from '../../errors/AppError'
-import { IProducts } from '../../interfaces'
-import prismaCLient from '../../prisma'
+import { AppError } from 'errors/AppError'
+import prismaCLient from 'prisma'
 
 class DeleteProductsService {
   async execute(code: number) {

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
-import { IProducts } from '../../interfaces'
-import { EditProductsService } from '../../services/products/EditProductsService'
-import { AppErrorProvider } from '../../utils/AppErrorProvider'
+import { IProducts } from 'interfaces'
+import { EditProductsService } from 'services/products/EditProductsService'
+import { AppErrorProvider } from 'utils/AppErrorProvider'
 
 class EditProductsController {
   async handle(request: Request, response: Response) {

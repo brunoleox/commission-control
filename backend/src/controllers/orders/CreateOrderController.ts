@@ -1,8 +1,7 @@
 import { Request, Response } from 'express'
-import { AppError } from '../../errors/AppError'
-import { IProducts } from '../../interfaces'
-import { CreateOrderService } from '../../services/orders/CreateOrdersService'
-import { AppErrorProvider } from '../../utils/AppErrorProvider'
+import { IProducts } from 'interfaces'
+import { CreateOrderService } from 'services/orders/CreateOrdersService'
+import { AppErrorProvider } from 'utils/AppErrorProvider'
 
 type RequestOrder = {
   cnpj_cpf: string

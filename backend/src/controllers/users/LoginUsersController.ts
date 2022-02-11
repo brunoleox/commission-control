@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
-import { IUsers } from '../../interfaces'
-import { AppErrorProvider } from '../../utils/AppErrorProvider'
-import { LoginUsersService } from '../../services/users/LoginUsersService'
+import { IUsers } from 'interfaces'
+import { AppErrorProvider } from 'utils/AppErrorProvider'
+import { LoginUsersService } from 'services/users/LoginUsersService'
 
 class LoginUserController {
   async handle(request: Request, response: Response) {

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import { DeleteProductsService } from '../../services/products/DeleteProductsService'
-import { AppErrorProvider } from '../../utils/AppErrorProvider'
+import { DeleteProductsService } from 'services/products/DeleteProductsService'
+import { AppErrorProvider } from 'utils/AppErrorProvider'
 
 class DeleteProductsController {
   async handle(request: Request, response: Response) {

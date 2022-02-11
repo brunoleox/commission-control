@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import { DeleteClientsService } from '../../services/clients/DeleteClientsService'
-import { AppErrorProvider } from '../../utils/AppErrorProvider'
+import { DeleteClientsService } from 'services/clients/DeleteClientsService'
+import { AppErrorProvider } from 'utils/AppErrorProvider'
 class DeleteClientsController {
   async handle(request: Request, response: Response) {
     const { cnpj_cpf } = request.body

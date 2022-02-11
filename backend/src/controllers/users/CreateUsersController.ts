@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
-import { IUsers } from '../../interfaces'
-import { CreateUsersService } from '../../services/users/CreateUsersService'
-import { AppErrorProvider } from '../../utils/AppErrorProvider'
+import { IUsers } from 'interfaces'
+import { CreateUsersService } from 'services/users/CreateUsersService'
+import { AppErrorProvider } from 'utils/AppErrorProvider'
 class CreateUsersController {
   async handle(request: Request, response: Response) {
     const { ...users }: IUsers = request.body

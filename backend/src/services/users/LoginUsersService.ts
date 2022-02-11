@@ -1,6 +1,6 @@
-import { AppError } from '../../errors/AppError'
-import { IUsers } from '../../interfaces'
-import prismaCLient from '../../prisma'
+import { AppError } from 'errors/AppError'
+import { IUsers } from 'interfaces'
+import prismaCLient from 'prisma'
 import { compare } from 'bcrypt'
 import { sign } from 'jsonwebtoken'
 

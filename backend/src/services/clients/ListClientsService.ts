@@ -1,4 +1,4 @@
-import prismaCLient from '../../prisma'
+import prismaCLient from 'prisma'
 
 class ListClientsService {
   async execute() {

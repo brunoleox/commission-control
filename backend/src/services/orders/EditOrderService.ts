@@ -1,5 +1,5 @@
-import { IProducts } from '../../interfaces'
-import prismaCLient from '../../prisma'
+import { IProducts } from 'interfaces'
+import prismaCLient from 'prisma'
 
 class EditOrdersService {
   async execute(name: string, products: IProducts, order: number) {

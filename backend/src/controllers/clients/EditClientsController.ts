@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
-import { IClients } from '../../interfaces'
-import { EditClientsService } from '../../services/clients/EditClientsService'
-import { AppErrorProvider } from '../../utils/AppErrorProvider'
+import { IClients } from 'interfaces'
+import { EditClientsService } from 'services/clients/EditClientsService'
+import { AppErrorProvider } from 'utils/AppErrorProvider'
 class EditClientsController {
   async handle(request: Request, response: Response) {
     const { ...client }: IClients = request.body

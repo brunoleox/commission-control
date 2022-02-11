@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
-import { IClients } from '../../interfaces'
-import { CreateClientsService } from '../../services/clients/CreateClientsService'
-import { AppErrorProvider } from '../../utils/AppErrorProvider'
+import { IClients } from 'interfaces'
+import { CreateClientsService } from 'services/clients/CreateClientsService'
+import { AppErrorProvider } from 'utils/AppErrorProvider'
 class CreateClientsController {
   async handle(request: Request, response: Response) {
     const { ...client }: IClients = request.body

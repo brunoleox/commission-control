@@ -1,7 +1,7 @@
 import { isValidCNPJ, isValidCPF } from '@brazilian-utils/brazilian-utils'
-import { AppError } from '../../errors/AppError'
-import { IClients } from '../../interfaces'
-import prismaCLient from '../../prisma'
+import { AppError } from 'errors/AppError'
+import { IClients } from 'interfaces'
+import prismaCLient from 'prisma'
 class CreateClientsService {
   async execute({ ...client }: IClients) {
     if (client.cnpj_cpf.length <= 11 && !isValidCPF(client.cnpj_cpf)) {

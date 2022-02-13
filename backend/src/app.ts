@@ -1,4 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express'
+import 'reflect-metadata'
+import 'shared/container'
 import { router } from './routes'
 import { AppError } from './errors/AppError'
 import cors from 'cors'

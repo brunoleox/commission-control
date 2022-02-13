@@ -6,10 +6,10 @@ import { CreateUsersController } from './controllers/users/CreateUsersController
 import { LoginUserController } from './controllers/users/LoginUsersController'
 // import { LogoutUserController } from './controllers/login/LogoutUserController'
 
-import { ListClientsController } from './controllers/clients/ListClientsController'
-import { CreateClientsController } from './controllers/clients/CreateClientsController'
-import { EditClientsController } from './controllers/clients/EditClientsController'
-import { DeleteClientsController } from './controllers/clients/DeleteClientsController'
+import { CreateClientController } from 'modules/clients/useCases/createClient/CreateClientController'
+import { EditClientController } from 'modules/clients/useCases/editClient/EditClientController'
+import { DeleteClientController } from 'modules/clients/useCases/deleteClient/DeleteClientController'
+import { ListClientController } from 'modules/clients/useCases/listClients/listClientsController'
 
 import { CreateProductsController } from './controllers/products/CreateProductsController'
 import { ListProductsController } from './controllers/products/ListProductsController'
@@ -27,15 +27,15 @@ router.post('/users', new CreateUsersController().handle)
 router.post('/login', new LoginUserController().handle)
 // router.post('/logout', new LogoutUserController().handle)
 
-router.get('/clients', new ListClientsController().handle)
+router.get('/clients', new ListClientController().handle)
 router.post(
   '/clients',
   ensureAuthenticated,
   clientValidator,
-  new CreateClientsController().handle
+  new CreateClientController().handle
 )
-router.put('/clients', new EditClientsController().handle)
-router.delete('/clients', new DeleteClientsController().handle)
+router.put('/clients', new EditClientController().handle)
+router.delete('/clients', new DeleteClientController().handle)
 
 router.get('/products', new ListProductsController().handle)
 router.post(

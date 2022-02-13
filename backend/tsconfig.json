@@ -4,6 +4,7 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
     "strict": false,
     "skipLibCheck": true,
     "typeRoots": [
@@ -28,7 +29,7 @@
         "interfaces/*"
       ],
       "prisma": [
-        "prisma/index.ts"
+        "module/shared/infra/prisma/index.ts"
       ]
     }
   }
